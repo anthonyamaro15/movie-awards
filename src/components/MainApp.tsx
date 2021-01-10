@@ -1,8 +1,11 @@
 import React from 'react';
+import DisplayMovies from './DisplayMovies';
 
 const MainApp = () => {
    return (
-      <div><h3>hi</h3></div>
+      <div>
+         <DisplayMovies />
+      </div>
    )
 }
 
