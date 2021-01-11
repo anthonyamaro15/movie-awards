@@ -9,16 +9,17 @@ interface Props {
 const DisplayMovies: React.FC<Props> = ({ movies, addNominate, search }) => {
 
    return (
-      <div>
+      <div className={movies.length ? "DisplayMovies" : ""}>
          {movies.length > 0 && (
             <div>
                <h2>{`Results for "${search}"`}</h2>
                {movies.map((movie: MovieProps) => (
-                  <div key={movie.imdbID}>
+                  <div className="list-wrapper" key={movie.imdbID}>
                      <ul>
-                        <li>{movie.Title}</li>
+                        <li>{`${movie.Title} (${movie.Year})`}</li>
                      </ul>
-                     <button 
+                     <button
+                        className={movie.nominate ? "disabled-button" : ""} 
                         disabled={movie.nominate} 
                         onClick={() => addNominate(movie)}
                      >{movie.nominate ? "nominated" : 'nominate'}

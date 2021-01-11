@@ -1,0 +1,73 @@
+.MainApp {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  form {
+    padding: 1rem 2rem;
+    background: white;
+    width: 40%;
+    margin: 0 auto 2rem;
+    text-align: center;
+
+    label {
+      input {
+        width: 100%;
+        padding: 0.3rem 0.4rem;
+        border: 1px solid grey;
+        font-weight: 300;
+      }
+    }
+    button {
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      margin-top: 1rem;
+      border: 1px solid grey;
+      text-transform: capitalize;
+    }
+  }
+
+  .result-wrapper {
+    @include flexProps(space-between);
+
+    .Nominations,
+    .DisplayMovies {
+      background: white;
+      width: 45%;
+      padding: 2rem 3rem;
+
+      ul {
+        li {
+          margin-bottom: 0.5rem;
+          list-style: none;
+        }
+      }
+
+      .list-wrapper {
+        @include flexProps(space-between);
+        align-items: center;
+
+        button {
+          display: inline-block;
+          margin-bottom: 1rem;
+          margin-left: 1rem;
+          padding: 0.2rem 1rem;
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    .DisplayMovies {
+      .list-wrapper {
+        .disabled-button {
+          color: rgb(185, 185, 185);
+          background: #f4f4f4;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

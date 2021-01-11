@@ -3,3 +3,22 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  color: #333;
+  background: rgb(145, 155, 184);
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+button,
+input {
+  color: #333;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  background: none;
+  font-size: 1rem;
+  border: 1px solid grey;
+}
