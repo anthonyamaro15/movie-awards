@@ -21,3 +21,16 @@ export function checkForNominations(movie: MovieProps[], nominations: MovieProps
    }
    return movie;
 }
+
+
+export function updateMovieData(movies: MovieProps[], movie: MovieProps) {
+   return movies.map((mov) => {
+      if(mov.imdbID === movie.imdbID) {
+         return {
+            ...mov,
+            nominate: !mov.nominate
+         }
+      }
+      return mov;
+   });
+}
