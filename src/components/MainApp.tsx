@@ -13,19 +13,25 @@ import DisplayMovies from './DisplayMovies';
 import Nominations from './Nominations';
 import SearchForm from './SearchForm';
 
+
+interface SearchProps {
+   movieTitle: string;
+}
+
 const MainApp = () => {
    const [search, setSearch] = useState('');
    const [movies, setMovies] = useState<MovieProps[]>([]);
    const [nominations, setNominations] = useState<MovieProps[]>([]);
    const [page, setPage] = useState(1);
    const [hasNominations, setHasNominations] = useState(false);
-   const { register, handleSubmit, watch } = useForm();
+   const { register, handleSubmit, watch, reset } = useForm();
 
-   const title = watch('movieTitle');
+   // const title = watch('movieTitle');
 
-   useEffect(() => {
-      setSearch(title);
-   }, [title]);
+   // useEffect(() => {
+
+
+   // }, [movies]);
    
    useEffect(() => {
       getCachedData();
@@ -51,13 +57,15 @@ const MainApp = () => {
       } 
    }
 
-   const onSubmit = async (values: any) => {
+   const onSubmit = async (values: SearchProps) => {
+      setSearch(values.movieTitle);
       try {
          const { data } = await axios
-            .get(`https://www.omdbapi.com/?apikey=${apiKey}&s=${search}&page=${page}`);
+            .get(`https://www.omdbapi.com/?apikey=${apiKey}&s=${values.movieTitle}&page=${page}`);
          const updatedData = addNewProperties(data.Search);
          const checkForNomination = checkForNominations(updatedData, nominations);
          setMovies(checkForNomination);
+         reset();
       } catch (error) {
          console.log(error);
       }
@@ -82,7 +90,7 @@ const MainApp = () => {
       setNominations(updateNominateData);
    }
    return (
-      <div>
+      <div className="MainApp">
          {hasNominations && (
             <h1>User has 5 nominations!!</h1>
          )}
@@ -91,12 +99,18 @@ const MainApp = () => {
             handleSubmit={handleSubmit} 
             register={register} 
          />
-         <DisplayMovies 
-            movies={movies} 
-            addNominate={addNominate} 
-            search={search} 
-         />
-         <Nominations nominations={nominations} removeNominate={removeNominate} />
+         <div className="result-wrapper">
+            <DisplayMovies 
+               movies={movies} 
+               addNominate={addNominate} 
+               search={search} 
+            />
+            <Nominations
+               movies={movies}
+               nominations={nominations} 
+               removeNominate={removeNominate} 
+            />
+         </div>
       </div>
    )
 }
