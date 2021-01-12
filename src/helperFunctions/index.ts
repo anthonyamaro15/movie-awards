@@ -10,6 +10,7 @@ export function addNewProperties(data: MovieProps[]) {
 }
 
 export function checkForNominations(movie: MovieProps[], nominations: MovieProps[]) {
+
    for(let i = 0; i < movie.length; i++) {
       for(let j = 0; j < nominations.length; j++) {
          if(nominations[j]) {

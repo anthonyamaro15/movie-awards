@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { getMoviesRequest } from '../apiRequest';
 import { apiKey } from '../envVariables';
 import { 
    addNewProperties, 
@@ -62,9 +63,12 @@ const MainApp = () => {
       setSearch(values.movieTitle);
       setError(false);
       setLoading(true);
+      const apiRequestValues = {
+         movieTitle: values.movieTitle,
+         page
+      }
       try {
-         const { data } = await axios
-            .get(`https://www.omdbapi.com/?apikey=${apiKey}&s=${values.movieTitle}&page=${page}`);
+         const { data } = await getMoviesRequest(apiRequestValues);
          const updatedData = addNewProperties(data.Search);
          const checkForNomination = checkForNominations(updatedData, nominations);
          setMovies(checkForNomination);
