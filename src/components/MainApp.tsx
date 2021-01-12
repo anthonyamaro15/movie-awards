@@ -25,13 +25,6 @@ const MainApp = () => {
    const [page, setPage] = useState(1);
    const [hasNominations, setHasNominations] = useState(false);
    const { register, handleSubmit, watch, reset } = useForm();
-
-   // const title = watch('movieTitle');
-
-   // useEffect(() => {
-
-
-   // }, [movies]);
    
    useEffect(() => {
       getCachedData();
@@ -91,8 +84,9 @@ const MainApp = () => {
    }
    return (
       <div className="MainApp">
+         <h1>nominate movies</h1>
          {hasNominations && (
-            <h1>User has 5 nominations!!</h1>
+            <h1 className="banner">User has 5 nominations!!</h1>
          )}
          <SearchForm 
             onSubmit={onSubmit} 

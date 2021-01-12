@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,6 +11,7 @@ body {
   background: rgb(145, 155, 184);
   text-transform: capitalize;
   font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
 }
 
 button,
