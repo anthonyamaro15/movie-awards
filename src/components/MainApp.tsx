@@ -33,6 +33,12 @@ const MainApp = () => {
    },[]);
 
    useEffect(() => {
+      if(error) {
+         setMovies([]);
+      }
+   },[error]);
+
+   useEffect(() => {
       if(nominations.length === 5) {
          setHasNominations(true);
          setTimeout(() => {
@@ -54,6 +60,7 @@ const MainApp = () => {
 
    const onSubmit = async (values: SearchProps) => {
       setSearch(values.movieTitle);
+      setError(false);
       setLoading(true);
       try {
          const { data } = await axios
