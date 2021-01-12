@@ -24,7 +24,9 @@ const MainApp = () => {
    const [nominations, setNominations] = useState<MovieProps[]>([]);
    const [page, setPage] = useState(1);
    const [hasNominations, setHasNominations] = useState(false);
-   const { register, handleSubmit, watch, reset } = useForm();
+   const [loading, setLoading] = useState(false);
+   const [error, setError] = useState(false);
+   const { register, handleSubmit, reset, errors } = useForm();
    
    useEffect(() => {
       getCachedData();
@@ -52,15 +54,20 @@ const MainApp = () => {
 
    const onSubmit = async (values: SearchProps) => {
       setSearch(values.movieTitle);
+      setLoading(true);
       try {
          const { data } = await axios
             .get(`https://www.omdbapi.com/?apikey=${apiKey}&s=${values.movieTitle}&page=${page}`);
          const updatedData = addNewProperties(data.Search);
          const checkForNomination = checkForNominations(updatedData, nominations);
          setMovies(checkForNomination);
+         setLoading(false);
+         setError(false);
          reset();
       } catch (error) {
          console.log(error);
+         setError(true);
+         setLoading(false);
       }
    }
 
@@ -92,9 +99,12 @@ const MainApp = () => {
             onSubmit={onSubmit} 
             handleSubmit={handleSubmit} 
             register={register} 
+            errors={errors}
          />
          <div className="result-wrapper">
-            <DisplayMovies 
+            <DisplayMovies
+               loading={loading}
+               error={error}
                movies={movies} 
                addNominate={addNominate} 
                search={search} 

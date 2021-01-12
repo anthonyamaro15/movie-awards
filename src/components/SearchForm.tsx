@@ -4,9 +4,10 @@ interface Props {
    handleSubmit: any;
    onSubmit: any;
    register: any;
+   errors: any;
 }
 
-const  SearchForm: React.FC<Props> = ({ handleSubmit, onSubmit, register }) => {
+const  SearchForm: React.FC<Props> = ({ handleSubmit, onSubmit, register, errors }) => {
    return (
       <>
          <form onSubmit={handleSubmit(onSubmit)}>
@@ -15,8 +16,9 @@ const  SearchForm: React.FC<Props> = ({ handleSubmit, onSubmit, register }) => {
                   type="text" 
                   id="movieTitle" 
                   name="movieTitle" 
-                  ref={register} 
+                  ref={register({ required: true })} 
                />
+               <p className="error">{errors.movieTitle && "title require"}</p>
             </label>
             <button type="submit">search</button>
          </form>      
