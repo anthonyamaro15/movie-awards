@@ -1,4 +1,5 @@
 import React from 'react';
+import { apiKey } from '../envVariables';
 import { MovieProps } from '../interfaces';
 
 interface Props {
@@ -12,14 +13,21 @@ const Nominations: React.FC<Props> = ({ nominations, removeNominate, movies }) =
          {movies.length > 0 && (
             <h2>{movies.length && nominations.length === 0 ? "nomination list empty" : "nominations"}</h2>
          )}
-         {nominations.map((movie) => (
-            <div className="list-wrapper" key={movie.imdbID}>
-               <ul>
-                  <li>{`${movie.Title} (${movie.Year})`}</li>
-               </ul>
-               <button onClick={() => removeNominate(movie)}>remove</button>
-            </div>
-         ))}
+         <div className="list-wrapper">
+            {nominations.map((movie) => (
+               <div className="single-movie" key={movie.imdbID}>
+                  <img 
+                     src={`http://img.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}`} 
+                     alt="movie poster"
+                  />
+                  <ul>
+                     <li><span>Title:</span>{`${movie.Title}`}</li>
+                     <li><span>Released Year:</span>{`(${movie.Year})`}</li>
+                  </ul>
+                  <button onClick={() => removeNominate(movie)}>remove</button>
+               </div>
+            ))}
+         </div>
       </div>
    )
 }

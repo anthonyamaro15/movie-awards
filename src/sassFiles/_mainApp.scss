@@ -1,5 +1,5 @@
 .MainApp {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 3rem auto 0;
 
   h2 {
@@ -47,6 +47,7 @@
 
   .result-wrapper {
     @include flexProps(space-between);
+    margin-bottom: 5rem;
 
     .Nominations,
     .DisplayMovies {
@@ -56,22 +57,43 @@
       border-radius: 4px;
 
       ul {
+        padding: 0.5rem;
+
         li {
-          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
+          margin-bottom: 0.2rem;
           list-style: none;
+
+          span {
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 0.3rem;
+          }
         }
       }
 
       .list-wrapper {
         @include flexProps(space-between);
-        align-items: center;
+        flex-wrap: wrap;
 
-        button {
-          display: inline-block;
+        .single-movie {
+          border: 1px solid rgb(223, 223, 223);
           margin-bottom: 1rem;
-          margin-left: 1rem;
-          padding: 0.2rem 1rem;
-          text-transform: capitalize;
+          width: 250px;
+
+          img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+          }
+
+          button {
+            display: inline-block;
+            margin: 0 0.5rem 1rem;
+            padding: 0.2rem 1rem;
+            font-size: 0.9rem;
+            text-transform: capitalize;
+          }
         }
       }
     }
@@ -89,11 +111,10 @@
 }
 
 .banner {
-  position: absolute;
-  //   top: 0;
+  position: fixed;
   left: 50%;
   bottom: 2rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: normal;
   transform: translateX(-50%);
   transition: all 0.3s ease;
@@ -101,6 +122,7 @@
   color: white;
   padding: 1rem 2rem;
   border-radius: 4px;
+  text-transform: none;
 }
 
 .loading {
