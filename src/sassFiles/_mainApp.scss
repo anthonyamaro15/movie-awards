@@ -7,26 +7,32 @@
   }
 
   form {
-    padding: 1rem 2rem;
+    padding: 1rem 2rem 2rem;
     background: white;
-    width: 40%;
-    margin: 0 auto 2rem;
-    text-align: center;
+    width: 100%;
+    margin: 2rem auto;
+    @include flexProps(space-between);
+    align-items: center;
+    border-radius: 4px;
 
     label {
+      width: 90%;
+
       input {
         width: 100%;
         padding: 0.3rem 0.4rem;
         border: 1px solid grey;
         font-weight: 300;
+        margin-top: 0.5rem;
+        cursor: auto;
       }
     }
     button {
       display: inline-block;
       padding: 0.2rem 1rem;
-      margin-top: 1rem;
       border: 1px solid grey;
       text-transform: capitalize;
+      margin-top: 1.7rem;
     }
   }
 
@@ -38,6 +44,7 @@
       background: white;
       width: 45%;
       padding: 2rem 3rem;
+      border-radius: 4px;
 
       ul {
         li {
@@ -70,4 +77,19 @@
       }
     }
   }
+}
+
+.banner {
+  position: absolute;
+  //   top: 0;
+  left: 50%;
+  bottom: 2rem;
+  font-size: 1.2rem;
+  font-weight: normal;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+  background: rgb(35, 158, 35);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 4px;
 }

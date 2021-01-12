@@ -8,18 +8,19 @@ interface Props {
 
 const  SearchForm: React.FC<Props> = ({ handleSubmit, onSubmit, register }) => {
    return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-         <label htmlFor="movieTitle">
-            <input 
-               type="text" 
-               id="movieTitle" 
-               name="movieTitle" 
-               placeholder="title" 
-               ref={register} 
-            />
-         </label>
-         <button type="submit">search</button>
-      </form>
+      <>
+         <form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="movieTitle"> Movie title
+               <input 
+                  type="text" 
+                  id="movieTitle" 
+                  name="movieTitle" 
+                  ref={register} 
+               />
+            </label>
+            <button type="submit">search</button>
+         </form>      
+      </>
    )
 }
 
