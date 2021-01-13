@@ -1,3 +1,8 @@
+$desktop: 1550px;
+$laptop: 950px;
+$tablet: 850px;
+$mobile: 520px;
+
 @mixin flexProps($justify) {
   display: flex;
   justify-content: $justify;
