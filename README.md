@@ -25,7 +25,7 @@ Live version here [movie award](https://movie-award.netlify.app/).
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://user-images.githubusercontent.com/47038260/104481670-e87fe900-557a-11eb-8212-5d89e4211805.png)
 
 ### Built With
 
@@ -42,11 +42,12 @@ Live version here [movie award](https://movie-award.netlify.app/).
 
 How to run the project locally
 
-- npm -- to intall all dependencies
+- npm -- to install all dependencies
   ```sh
+  npm install -g sass
   sass -- you may have to install sass globally
   ```
-  -
+  - sass -- you may have to install sass globally
   ```sh
   npm install -g sass
   ```
