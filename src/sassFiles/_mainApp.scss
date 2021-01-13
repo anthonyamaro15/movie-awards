@@ -2,6 +2,10 @@
   max-width: 1400px;
   margin: 3rem auto 0;
 
+  @media (max-width: $desktop) {
+    max-width: 80%;
+  }
+
   h2 {
     margin-bottom: 2rem;
   }
@@ -19,6 +23,16 @@
       width: 90%;
       position: relative;
 
+      @media (max-width: $desktop) {
+        width: 85%;
+      }
+      @media (max-width: $tablet) {
+        width: 80%;
+      }
+      @media (max-width: $mobile) {
+        width: 70%;
+      }
+
       input {
         width: 100%;
         padding: 0.3rem 0.4rem;
@@ -34,6 +48,10 @@
         font-size: 0.9rem;
         left: 0;
         color: red;
+
+        @media (max-width: $tablet) {
+          font-size: 0.8rem;
+        }
       }
     }
     button {
@@ -49,12 +67,21 @@
     @include flexProps(space-between);
     margin-bottom: 5rem;
 
+    @media (max-width: $tablet) {
+      flex-wrap: wrap;
+    }
+
     .Nominations,
     .DisplayMovies {
       background: white;
       width: 45%;
       padding: 2rem 3rem;
       border-radius: 4px;
+
+      @media (max-width: $tablet) {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
 
       ul {
         padding: 0.5rem;
@@ -76,15 +103,26 @@
         @include flexProps(space-between);
         flex-wrap: wrap;
 
+        @media (max-width: $desktop) {
+          justify-content: center;
+        }
+
         .single-movie {
           border: 1px solid rgb(223, 223, 223);
           margin-bottom: 1rem;
           width: 250px;
 
+          @media (max-width: $laptop) {
+            width: 200px;
+          }
           img {
             width: 100%;
             height: 350px;
             object-fit: cover;
+
+            @media (max-width: $laptop) {
+              height: 250px;
+            }
           }
 
           button {
