@@ -44,7 +44,7 @@ How to run the project locally
 
 - npm -- to install all dependencies
   ```sh
-  npm install -g sass
+  npm install
   ```
   - sass -- you may have to install sass globally
   ```sh
