@@ -1,12 +1,13 @@
 import React from 'react';
-import { apiKey } from '../envVariables';
 import { MovieProps } from '../interfaces';
+import backupImg from '../imgs/backup.jpg';
 
 interface Props {
    nominations: MovieProps[];
    removeNominate: (movie: MovieProps) => void;
    movies: MovieProps[];
 }
+
 const Nominations: React.FC<Props> = ({ nominations, removeNominate, movies }) => {
    return (
       <div className={movies.length || nominations.length ? "Nominations" : ""}>
@@ -17,7 +18,7 @@ const Nominations: React.FC<Props> = ({ nominations, removeNominate, movies }) =
             {nominations.map((movie) => (
                <div className="single-movie" key={movie.imdbID}>
                   <img 
-                     src={`http://img.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}`} 
+                     src={movie.Poster === 'N/A' ? backupImg : movie.Poster}  
                      alt="movie poster"
                   />
                   <ul>
