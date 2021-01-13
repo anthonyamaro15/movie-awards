@@ -1,9 +1,7 @@
-import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { getMoviesRequest } from '../apiRequest';
-import { apiKey } from '../envVariables';
 import { 
    addNewProperties, 
    checkForNominations, 
@@ -40,6 +38,7 @@ const MainApp = () => {
    },[error]);
 
    useEffect(() => {
+      // when there is 5 nomination in list display banner for 4 seconds
       if(nominations.length === 5) {
          setHasNominations(true);
          setTimeout(() => {
@@ -48,6 +47,7 @@ const MainApp = () => {
       }
    }, [nominations])
 
+   // cache nominations every time there is a new nomination
    useEffect(() => {
       localStorage.setItem('nominations', JSON.stringify(nominations));
    },[nominations]);
