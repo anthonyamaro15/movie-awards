@@ -4,7 +4,7 @@ export function addNewProperties(data: MovieProps[]) {
    return data.map((movie) => {
       return {
          ...movie,
-         nominate: false
+         nominate: false,
       };
    })
 }
